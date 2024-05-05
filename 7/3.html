@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+    </head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script>
+    const Temperature = ({ t }) => {
+            const textStyle = {
+                color: t < 0 ? 'blue' : 'red'
+            };
+            return <div style={textStyle}>{t}</div>;
+        };
+
+        class ColorChangeButton extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    backgroundColor: 'red'
+                };
+            }
+
+            handleButtonClick = () => {
+                this.setState(prevState => ({
+                    backgroundColor: prevState.backgroundColor === 'red' ? 'green' : 'red'
+                }));
+            };
+
+            render() {
+                const buttonStyle = {
+                    backgroundColor: this.state.backgroundColor,
+                    color: 'white',
+                    padding: '10px',
+                    border: 'none',
+                    cursor: 'pointer'
+                };
+
+                return (
+                    <button style={buttonStyle} onClick={this.handleButtonClick}>
+                        Change Color
+                    </button>
+                );
+            }
+        };
+
+        const App = () => {
+            return (
+                <div>
+                    <h2>Task 3: Temperature Display</h2>
+                    <Temperature t={451} /> {}
+                    <h2>Task 4: Color Change Button</h2>
+                    <ColorChangeButton />
+                </div>
+            );
+        };
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>

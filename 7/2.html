@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OnlyEven</title>
+
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script>
+    const OnlyEven = ({ arr }) => {
+            const evenNumbers = arr.filter(num => num % 2 === 0);
+            return React.createElement('div', null, evenNumbers.join(', '));
+        };
+        const App = () => {
+            return React.createElement('div', null,
+                React.createElement('h2', null, 'Результаты:'),
+                React.createElement('h3', null, 'Задача 1:'),
+                React.createElement(Square, { n: 3 }), // результат: 9
+                React.createElement('h3', null, 'Задача 2:'),
+                React.createElement(OnlyEven, { arr: [14, 5, 6, 12, 21, 2] }) // результат: 14, 6, 12, 2
+            );
+        };
+        ReactDOM.render(
+            React.createElement(App),
+            document.getElementById('root')
+        );
+         </script>
+</body>
+</html>
